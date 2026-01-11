@@ -19,9 +19,9 @@ class ArticleResponse(BaseModel):
     url: str
     title: str
     summary: str
-    key_entities: KeyEntities
+    key_entities: Dict
     sections: List[str]
-    quiz: List[QuizQuestion]
+    quiz: List[Dict]
     related_topics: List[str]
     created_at: datetime
     

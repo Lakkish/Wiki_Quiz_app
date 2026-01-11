@@ -11,3 +11,4 @@ langchain-google-genai==0.0.6
 pydantic==2.5.3
 httpx==0.26.0
 lxml==5.1.0
+groq==0.4.1
