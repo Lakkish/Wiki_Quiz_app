@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API_BASE_URL = "https://wiki-quiz-backend-rev4.onrender.com";
 
 export const generateQuiz = async (url) => {
   const response = await axios.post(`${API_BASE_URL}/api/generate-quiz`, {
