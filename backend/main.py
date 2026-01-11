@@ -12,7 +12,7 @@ import json
 PORT = int(os.getenv("PORT", 8000))
 origins = [
     "http://localhost:3000",
-    "https://your-frontend-url.onrender.com",  # Update this after deploying frontend
+    "https://wiki-quiz-app-frontend.onrender.com",  # Update this after deploying frontend
 ]
 
 # Create database tables
