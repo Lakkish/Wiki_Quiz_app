@@ -1,0 +1,529 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.app-header {
+  background: white;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.app-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  background: white;
+  padding: 0 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tab {
+  padding: 1rem 2rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.tab:hover {
+  color: #667eea;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.tab-content {
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.url-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.url-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.url-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.generate-btn {
+  padding: 1rem 2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.generate-btn:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.generate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  background: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  border-left: 4px solid #c33;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.quiz-display {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quiz-header h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.summary {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.sections-info,
+.entities-info,
+.quiz-questions,
+.related-topics {
+  margin: 2rem 0;
+}
+
+.sections-info h3,
+.entities-info h3,
+.quiz-questions h3,
+.related-topics h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.sections,
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.section-tag,
+.topic-tag {
+  background: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.section-tag:hover,
+.topic-tag:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.entities-info {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.entities > div {
+  margin: 0.5rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.entities strong {
+  color: #667eea;
+}
+
+.question-card {
+  background: #f9f9f9;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.question-card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(5px);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.question-number {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.95rem;
+}
+
+.difficulty {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty.easy {
+  background: #d4edda;
+  color: #155724;
+}
+
+.difficulty.medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.difficulty.hard {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.question-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.options {
+  margin: 1rem 0;
+}
+
+.option {
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.option:hover {
+  border-color: #667eea;
+  background: #f0f4ff;
+}
+
+.option.correct {
+  background: #d4edda;
+  border-color: #28a745;
+  font-weight: 600;
+}
+
+.option.correct:hover {
+  background: #c3e6cb;
+}
+
+.correct-mark {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.explanation {
+  background: #e7f3ff;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  color: #004085;
+  border-left: 3px solid #0056b3;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.history-table th,
+.history-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.history-table th {
+  background: #f9f9f9;
+  font-weight: 600;
+  color: #667eea;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.history-table tr:hover {
+  background: #f9f9f9;
+}
+
+.history-table tbody tr {
+  transition: all 0.3s;
+}
+
+.url-cell a {
+  color: #667eea;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.url-cell a:hover {
+  text-decoration: underline;
+  color: #5568d3;
+}
+
+.details-btn {
+  padding: 0.5rem 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.details-btn:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 10px;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  animation: slideUp 0.3s;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: sticky;
+  top: 1rem;
+  left: calc(100% - 3rem);
+  background: #f0f0f0;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+  float: right;
+  margin-bottom: 1rem;
+}
+
+.close-btn:hover {
+  background: #e0e0e0;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .url-form {
+    flex-direction: column;
+  }
+
+  .tabs {
+    padding: 0 1rem;
+  }
+
+  .tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .app-header p {
+    font-size: 0.95rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+    max-height: 95vh;
+  }
+
+  .question-card {
+    padding: 1rem;
+  }
+
+  .history-table {
+    font-size: 0.9rem;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+/* Scrollbar styling */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
