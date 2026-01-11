@@ -7,17 +7,25 @@ import schemas
 from database import engine, get_db
 from scraper import WikipediaScraper
 from services.quiz_services import QuizService
+import os
 import json
+PORT = int(os.getenv("PORT", 8000))
+origins = [
+    "http://localhost:3000",
+    "https://your-frontend-url.onrender.com",  # Update this after deploying frontend
+]
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Wiki Quiz API")
 
+
+
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,  # Change from ["*"] to specific origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -121,4 +129,4 @@ async def delete_quiz(quiz_id: int, db: Session = Depends(get_db)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=PORT) 

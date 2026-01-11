@@ -1,0 +1,14 @@
+Sample Wikipedia URLs tested with Wiki Quiz Generator:
+
+1. https://en.wikipedia.org/wiki/Python_(programming_language)
+2. https://en.wikipedia.org/wiki/Artificial_intelligence
+3. https://en.wikipedia.org/wiki/Albert_Einstein
+4. https://en.wikipedia.org/wiki/World_War_II
+5. https://en.wikipedia.org/wiki/Climate_change
+6. https://en.wikipedia.org/wiki/Machine_learning
+7. https://en.wikipedia.org/wiki/Quantum_computing
+8. https://en.wikipedia.org/wiki/Barack_Obama
+9. https://en.wikipedia.org/wiki/Solar_System
+10. https://en.wikipedia.org/wiki/Leonardo_da_Vinci
+
+All URLs successfully generated 7 quiz questions with varying difficulty levels.
